@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   #管理者ログイン用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'homes#top'
-    get 'homes/about' => 'homes#about'
+    get 'about' => 'homes#about'
     resources :records
   end
 

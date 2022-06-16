@@ -1,2 +1,41 @@
-<h1>Public::Records#show</h1>
-<p>Find me in app/views/public/records/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: @record.user %>
+      <h2 class="mt-3">New Record</h2>
+      <%= render 'form', record: Record.new %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Record detail</h2>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(@record.user) do %>
+            <%= image_tag @record.user.get_profile_image, size:"100x100" %><br>
+            <%= @record.user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @record.title, @record %></td>
+          <td><%= @record.body %></td>
+          <td class=<%= "favorite-" + @record.id.to_s %> >
+            <%= render "favorites/btn", record: @record %>
+          </td>
+          <td class="record-comments-counter">
+            <%= render "record_comments/counter", record: @record %>
+          </td>
+          <% if @record.user == current_user %>
+            <td><%= link_to 'Edit', edit_record_path(@record), class: "btn btn-sm btn-success edit_record_#{@record.id}" %></td>
+            <td><%= link_to 'Destroy', @record, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_record_#{@record.id}" %></td>
+          <% end %>
+        </tr>
+      </table>
+
+      <div class="record-comments-index">
+        <%= render "record_comments/index", record: @record %>
+      </div>
+
+      <%= render "record_comments/form", record: @record, record_comment: @record_comment %>
+
+    </div>
+  </div>
+</div>

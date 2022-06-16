@@ -1,2 +1,16 @@
-<h1>Public::Records#new</h1>
-<p>Find me in app/views/public/records/new.html.erb</p>
+<div class="container">
+  <div class="row">新規トレーニング記録</div>
+  <%= form_with model: Record.new,local:true do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control record_title' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control record_body' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
