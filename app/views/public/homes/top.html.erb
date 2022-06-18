@@ -1,2 +1,4 @@
+<% unless user_signed_in? %>
+  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+<% end %>
 <h1>Top画面</h1>
-<%= render 'layouts/header', user: @user %>
