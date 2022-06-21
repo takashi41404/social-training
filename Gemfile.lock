@@ -252,7 +252,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
-  sqlite3
+  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
