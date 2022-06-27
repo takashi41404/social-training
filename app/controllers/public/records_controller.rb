@@ -42,7 +42,7 @@ class Public::RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:title, :body)
+    params.require(:record).permit(:title, :body, :image)
   end
 
   def ensure_correct_user
