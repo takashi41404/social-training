@@ -21,8 +21,8 @@
         </td>
         <td><%= link_to record.title,record, class: "record_#{record.id}" %></td>
         <td><%= record.body %></td>
-        <td class=<%#= "favorite-" + record.id.to_s %> >
-            <%#= render "favorites/btn", record: record %>
+        <td class=<%= "favorite-" + record.id.to_s %> >
+            <%= render "public/favorites/btn", record: record %>
         </td>
         <td><%#= render "record_comments/counter", record: record %></td>
       </tr>

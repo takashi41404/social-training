@@ -1,9 +1,6 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <%= link_to new_record_path do %>
-        <h2 class="mt-3">New record</h2>
-      <% end %>
       <h2>User info</h2>
       <%= render 'public/users/info', user: @record.user %>
 
@@ -20,8 +17,8 @@
           </td>
           <td><%= link_to @record.title, @record %></td>
           <td><%= @record.body %></td>
-          <td class=<%#= "favorite-" + @record.id.to_s %> >
-            <%#= render "favorites/btn", record: @record %>
+          <td class=<%= "favorite-" + @record.id.to_s %> >
+            <%= render "public/favorites/btn", record: @record %>
           </td>
           <td class="record-comments-counter">
             <%#= render "record_comments/counter", record: @record %>
