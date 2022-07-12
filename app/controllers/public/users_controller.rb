@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @records = Record.all
+    @records = @user.records
   end
 
   def edit

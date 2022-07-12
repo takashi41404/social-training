@@ -11,15 +11,13 @@
   		  <tr>
           <td>
             <%= image_tag @record.get_image, size:"100x100" %><br>
-            <%= link_to(@record.user) do %>
-              <%= @record.user.name %>
-            <% end %>
+            <%= l @record.created_at %><br>
+            <div class=<%= "favorite-" + @record.id.to_s %> >
+              <%= render "public/favorites/btn", record: @record %>
+            </div>
           </td>
-          <td><%= link_to @record.title, @record %></td>
+          <td><%= @record.title %></td>
           <td><%= @record.body %></td>
-          <td class=<%= "favorite-" + @record.id.to_s %> >
-            <%= render "public/favorites/btn", record: @record %>
-          </td>
           <td class="record-comments-counter">
             <%#= render "record_comments/counter", record: @record %>
           </td>
