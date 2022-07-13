@@ -17,7 +17,9 @@
           <% end %>
         </td>
         <td>
-          <%= image_tag record.get_image, size:'50x50' %> <br>
+          <%= link_to(record) do %>
+           <%= image_tag record.get_image, size:'50x50' %>
+          <% end %><br>
           <%= l record.created_at %>
         </td>
         <td><%= link_to record.title,record, class: "record_#{record.id}" %></td>
@@ -25,7 +27,7 @@
         <td class=<%= "favorite-" + record.id.to_s %> >
             <%= render "public/favorites/btn", record: record %>
         </td>
-        <td><%#= render "record_comments/counter", record: record %></td>
+        <td><%= render "public/social_comments/counter", record: record %></td>
       </tr>
     <% end %>
   </tbody>

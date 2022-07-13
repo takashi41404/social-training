@@ -1,0 +1,21 @@
+<table>
+  <tbody>
+      <% record.social_comments.each do |social_comment| %>
+      <tr>
+        
+        <td>
+          <%= link_to user_path(social_comment.user) do %>
+            <%= image_tag social_comment.user.get_profile_image, size: "100x100" %><br>
+            <%= social_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= social_comment.comment %></td>
+        <td>
+          <% if social_comment.user == current_user %>
+            <%= link_to "Destroy", record_social_comment_path(record, social_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

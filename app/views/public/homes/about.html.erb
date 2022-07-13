@@ -1,1 +1,14 @@
-public/homes/about
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <p>トレーニングの記録をつけて、 </p>
+      <p>理想の体作りに向けてユーザー同士で</p>
+      <p>情報共有やアドバイスをするＳＮＳサイトです！</p>
+      <p>お試しの方はゲストログインをご利用ください！</p>
+        <% unless user_signed_in? %>
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
