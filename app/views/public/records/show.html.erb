@@ -16,7 +16,7 @@
           </td>
           <td><%= @record.title %></td>
           <td><%= @record.body %></td>
-          <td class="record-comments-counter">
+          <td class="social-comments-counter">
             <%= render "public/social_comments/counter", record: @record %>
           </td>
           <% if @record.user == current_user %>
@@ -26,11 +26,11 @@
         </tr>
       </table>
 
-      <div class="record-comments-index">
+      <div class="social-comments-index">
         <%= render "public/social_comments/index", record: @record %>
       </div>
 
-      <%= render "public/social_comments/form", record: @record, record_comment: @record_comment %>
+      <%= render "public/social_comments/form", record: @record, social_comment: @social_comment %>
 
     </div>
   </div>
