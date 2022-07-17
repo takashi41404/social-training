@@ -1,10 +1,10 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th></th>
+      <th>User</th>
       <th>Image</th>
       <th>Title</th>
-      <th>record</th>
+      <th>Body</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,14 +17,17 @@
           <% end %>
         </td>
         <td>
-          <%= image_tag record.get_image, size:'50x50' %>
+          <%= link_to(record) do %>
+           <%= image_tag record.get_image, size:'50x50' %>
+          <% end %><br>
+          <%= l record.created_at %>
         </td>
         <td><%= link_to record.title,record, class: "record_#{record.id}" %></td>
         <td><%= record.body %></td>
-        <td class=<%#= "favorite-" + record.id.to_s %> >
-            <%#= render "favorites/btn", record: record %>
+        <td class=<%= "favorite-" + record.id.to_s %> >
+            <%= render "public/favorites/btn", record: record %>
         </td>
-        <td><%#= render "record_comments/counter", record: record %></td>
+        <td><%= render "public/social_comments/counter", record: record %></td>
       </tr>
     <% end %>
   </tbody>

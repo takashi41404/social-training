@@ -4,7 +4,7 @@ class Public::RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
-    # @comment = Comment.new
+    @social_comment = SocialComment.new
   end
 
   def index

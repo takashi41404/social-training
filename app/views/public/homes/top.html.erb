@@ -1,11 +1,15 @@
-<div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-<h1>Welcome to Social Training!!</h1>
-<p>筋トレの記録をつけて、 </p>
-<p>理想の体作りに向けてユーザー同士で</p>
-<p>情報共有やアドバイスをするＳＮＳサイトです！</p>
-
-
-
-<% unless user_signed_in? %>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h1>Welcome to Social Training!!</h1>
+      <% unless user_signed_in? %>
+        <div class="row">
+           <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+           <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
