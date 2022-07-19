@@ -16,9 +16,13 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+  # 以下、ユーザー用
   scope module: :public do
     root 'homes#top'
     get 'about' => 'homes#about'
+    get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+    put 'users/information' => 'users#update'
+    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
     resources :records do
       resources :social_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

@@ -1,0 +1,6 @@
+<section class="inner">
+	<h2 class="section-ttl">本当に退会しますか？</h2>
+		<%= link_to "戻る", :back, class: "btn btn-primary" %>
+		<%= link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+	</div>
+</section>
