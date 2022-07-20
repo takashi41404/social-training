@@ -11,4 +11,17 @@ class Record < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Record.where(title: content)
+    elsif method == 'forward'
+      Record.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Record.where('title LIKE ?', '%'+content)
+    else
+      Record.where('title LIKE ?', '%'+content+'%')
+    end
+  end
+
 end

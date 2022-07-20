@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'about' => 'homes#about'
+    get 'search', to: 'searches#search'
 
     resources :records do
       resources :social_comments, only: [:create, :destroy]
