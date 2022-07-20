@@ -1,0 +1,25 @@
+<%= link_to 'records', admin_records_path %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>introduction</th>
+      <th>status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+            <%= image_tag user.get_profile_image, size: '50x50' %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+        <td><%= user.is_deleted ? '退会' : '有効' %></td>
+        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

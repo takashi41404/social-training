@@ -1,0 +1,34 @@
+<div class='container'>
+  		<h2>Record detail</h2>
+  		<table class='table'>
+  		  <thead>
+    		  <tr>
+    		    <th>image</th>
+    		    <th>title</th>
+    		    <th>body</th>
+    		    <th>comments</th>
+    		  </tr>
+    		</thead>
+    		<tbody>
+    		  <tr></tr>
+            <td>
+              <%= image_tag @record.get_image, size:"200x200" %><br>
+              <%= l @record.created_at %><br>
+              </div>
+            </td>
+            <td><%= @record.title %></td>
+            <td><%= @record.body %></td>
+            <td class="social-comments-counter">
+              <%= render "public/social_comments/counter", record: @record %>
+            </td>
+            <td><%= link_to 'Destroy', admin_record_path(@record), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_record_#{@record.id}" %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="social-comments-index">
+        <%= render "public/social_comments/index", record: @record %>
+      </div>
+    </div>
+  </div>
+</div>

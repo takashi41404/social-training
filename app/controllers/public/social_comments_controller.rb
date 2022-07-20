@@ -5,7 +5,6 @@ class Public::SocialCommentsController < ApplicationController
     @comment = current_user.social_comments.new(social_comment_params)
     @comment.record_id = record.id
     @comment.save
-#    redirect_to record_path
   end
 
   def destroy

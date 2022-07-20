@@ -5,6 +5,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  #管理者画面
+  namespace :admin do
+    resources :users, only: [:show, :index, :edit, :update]
+    resources :records, only: [:show, :index, :destroy]
+
+  end
+
+
   #会員サインアップ＆ログイン
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -20,15 +28,18 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'about' => 'homes#about'
-    get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-    put 'users/information' => 'users#update'
-    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+
     resources :records do
       resources :social_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
 
     resources :users, only: [:index,:show,:edit,:update] do
+      collection do
+       get :unsubscribe , as: 'confirm_unsubscribe'
+       patch :withdraw, as: 'withdraw'
+      end
+
       resource :relationships, only: [:create, :destroy]
         get 'followees' => 'relationships#followees', as: 'followees'
         get 'followers' => 'relationships#followers', as: 'followers'
