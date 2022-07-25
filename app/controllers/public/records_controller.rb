@@ -5,10 +5,11 @@ class Public::RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
     @social_comment = SocialComment.new
+    @social_comments = SocialComment.page(params[:page])
   end
 
   def index
-    @records = Record.all
+    @records = Record.page(params[:page])
     @record = Record.new
   end
 
@@ -18,7 +19,7 @@ class Public::RecordsController < ApplicationController
     if @record.save
       redirect_to record_path(@record), notice: "You have created record successfully."
     else
-      @records = Record.all
+      @records = Record.page(params[:page])
       render 'index'
     end
   end

@@ -6,7 +6,7 @@ class Admin::RecordsController < ApplicationController
   end
 
   def index
-    @records = Record.all
+    @records = Record.page(params[:page])
   end
 
   def destroy

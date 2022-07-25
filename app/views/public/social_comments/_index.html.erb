@@ -2,7 +2,7 @@
   <tbody>
       <% record.social_comments.each do |social_comment| %>
       <tr>
-        
+
         <td>
           <%= link_to user_path(social_comment.user) do %>
             <%= image_tag social_comment.user.get_profile_image, size: "100x100" %><br>
@@ -17,5 +17,6 @@
         </td>
       </tr>
       <% end %>
+      <%#= paginate social_comments %>
   </tbody>
 </table>
